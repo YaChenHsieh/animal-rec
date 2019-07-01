@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Animal Dect</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Noto+Sans+TC&display=swap" rel="stylesheet">
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/bootstrap.js"></script>
+
+    {{!-- bootbox --}}
+    <script src="js/bootbox.min.js"></script>
+    <script src="js/bootbox.locales.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="js/moment-with-locales.js"></script>
+
+
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+        var socket = io.connect('http://localhost:3000');
+    </script>
+
+
+    <style>
+        body {
+            font-family: 'Noto Sans TC', sans-serif;
+        }
+
+        #mystream{
+            border:black 2px solid;
+            height: 450px;
+            width: 600px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container text-center">
+        <h1>HELLO WORLD</h1>
+        <h1 id="datenow"></h1>
+        <h1 id="timenow"></h1>
+        <div>
+            <img id="mystream" src="">
+        </div>
+
+    </div>
+
+    <script>
+        function time_now() {
+            var time_now = new Date()
+            //var time_now = time_now.toLocaleTimeString()
+            var date_now = moment(time_now).format('YYYY-MM-DD')
+            var time_now = moment(time_now).format('HH:mm:ss')
+            $("#datenow").text(date_now)
+            $("#timenow").text(time_now)
+
+        }
+        time_now()
+        setInterval(function(){
+            time_now()
+        }, 1000)
+
+
+
+    </script>   
+
+</body>
